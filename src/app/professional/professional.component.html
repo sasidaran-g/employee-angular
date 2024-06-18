@@ -1,0 +1,129 @@
+<h1>PROFESSIONAL FORM</h1>
+
+<div class="container mt-5 form-background">
+    <form [formGroup]="professionalForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="empid" class="form-label">Employee ID:</label>
+                    <input type="number" class="form-control" id="empid" formControlName="empid"/>
+                    <div *ngIf="professionalForm.get('empid')?.invalid &&(professionalForm.get('empid')?.dirty || professionalForm.get('empid')?.touched)"><span class="text-danger">Employee Id is required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="education" class="form-label">Education:</label>
+                    <input type="text" class="form-control" id="education" formControlName="education"/>
+                    <div *ngIf="professionalForm.get('education')?.invalid &&(professionalForm.get('education')?.dirty || professionalForm.get('education')?.touched)">
+                      <span class="text-danger">Education is required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Select element for domain -->
+                <div class="mb-3">
+                    <label for="domain" class="form-label">Domain:</label>
+                    <select class="form-select" id="domain" formControlName="domain">
+                        <option value="" disabled>Select a domain</option>
+                        <option *ngFor="let domain of domains" [value]="domain">{{ domain }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+       <!-- Checkbox group for languages -->
+       <div class="mb-3">
+        <label class="form-label">Languages:</label>
+        <div class="row">
+            <div *ngFor="let language of languages" class="form-check" class="col-md-2">
+                <input class="form-check-input" type="checkbox" [formControlName]="language" [id]="language">
+                <label class="form-check-label" [for]="language">{{ language }}</label>
+            </div>
+        </div> 
+    </div>
+    <!-- Checkbox group for skills -->
+    <div class="mb-3">
+        <label class="form-label">Skills:</label>
+        <div class="row">
+            <div *ngFor="let skill of skills" class="form-check" class="col-md-2">
+                <input class="form-check-input" type="checkbox" [formControlName]="skill" [id]="skill">
+                <label class="form-check-label" [for]="skill">{{ skill }}</label>
+            </div>
+        </div> 
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="joindate" class="form-label">Joined Date:</label>
+                <mat-form-field appearance="fill">
+                  <mat-label>Joined Date</mat-label>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="joindate"/>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div *ngIf="professionalForm.get('joindate')?.invalid && (professionalForm.get('joindate')?.dirty || professionalForm.get('joindate')?.touched) ">
+                  <span class="text-danger">Joined Date is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="basicsalary" class="form-label">Basic Salary:</label>
+                <input type="number" class="form-control" id="basicsalary" formControlName="basicsalary"/>
+                <div *ngIf="professionalForm.get('basicsalary')?.invalid &&(professionalForm.get('basicsalary')?.dirty || professionalForm.get('basicsalary')?.touched)">
+                  <span class="text-danger">Basic Salary is required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="hra" class="form-label">HRA:</label>
+                <input type="number" class="form-control" id="hra" formControlName="hra"/>
+                <div *ngIf="professionalForm.get('hra')?.invalid &&(professionalForm.get('hra')?.dirty || professionalForm.get('hra')?.touched)">
+                  <span class="text-danger">HRA is required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="da" class="form-label">DA:</label>
+                <input type="number" class="form-control" id="da" formControlName="da"/>
+                <div *ngIf="professionalForm.get('da')?.invalid &&(professionalForm.get('da')?.dirty || professionalForm.get('da')?.touched)">
+                  <span class="text-danger">DA is required</span>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="insurance" class="form-label">Insurance:</label>
+                <input type="number" class="form-control" id="insurance" formControlName="insurance"/>
+                <div *ngIf="professionalForm.get('insurance')?.invalid &&(professionalForm.get('insurance')?.dirty || professionalForm.get('insurance')?.touched)">
+                  <span class="text-danger">Insurance is required</span>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="pf" class="form-label">PF:</label>
+                <input type="number" class="form-control" id="pf" formControlName="pf"/>
+                <div *ngIf="professionalForm.get('pf')?.invalid &&(professionalForm.get('pf')?.dirty || professionalForm.get('pf')?.touched)">
+                  <span class="text-danger">PF is required</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div class="col-lg-4 mt-2">
+        <button class="btn btn-primary btn-sm">Submit</button>&nbsp;
+        <button type="button" routerLink="/employee" class="btn btn-dark btn-sm">
+          Back
+        </button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,52 @@
+<h1>PROFESSIONAL TABLE</h1>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Emp Id</th>
+        <th scope="col">Education</th>
+        <th scope="col">Domain</th>
+        <th scope="col">Languages</th>
+        <th scope="col">Skills</th>
+        <th scope="col">join Date</th>
+        <th scope="col">Basic salary</th>
+        <th scope="col">HRA</th>
+        <th scope="col">DA</th>
+        <th scope="col">Insurace</th>
+        <th scope="col">PF</th>
+        <th scope="col">Net Salary</th>
+        <th scope="col">Allowence</th>
+        <th scope="col">Take Home Salary</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of readData">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.empid }}</td>
+        <td>{{ emp.education }}</td>
+        <td>{{ emp.domain }}</td>
+        <td>{{ emp.languages }}</td>
+        <td>{{ emp.skills }}</td>
+        <td>{{ emp.joindate }}</td>
+        <td>{{ emp.basicsalary }}</td>
+        <td>{{ emp.hra }}</td>
+        <td>{{ emp.da }}</td>
+        <td>{{ emp.insurance }}</td>
+        <td>{{ emp.pf }}</td>
+        <td>{{ emp.netsalary }}</td>
+        <td>{{ emp.allowence }}</td>
+        <td>{{ emp.takehomesalary }}</td>
+        <td>
+          <a [routerLink]="['/professional-edit-form', emp.id]"
+            ><button class="btn btn-info">Edit</button></a
+          >&nbsp;<button class="btn btn-danger" (click)="onDelete(emp.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" routerLink="/table" class="btn btn-dark">Back</button>
+</div>

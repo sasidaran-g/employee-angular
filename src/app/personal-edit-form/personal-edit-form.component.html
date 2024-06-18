@@ -1,0 +1,70 @@
+<div class="container mt-5 form-background">
+    <form [formGroup]="editForm" (ngSubmit)="onUpdate()">
+      <div class="mb-3">
+        <label for="editname" class="form-label">Employee Name:</label>
+        <input type="text" class="form-control" id="editname" formControlName="editname"/>
+        <div *ngIf="editForm.get('editname')?.invalid &&(editForm.get('editname')?.dirty || editForm.get('editname')?.touched)">
+          <span class="text-danger">Employee Name is required</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="editage" class="form-label">Employee Age:</label>
+        <input type="text" class="form-control" id="editage" formControlName="editage"/>
+        <div *ngIf="editForm.get('editage')?.invalid &&(editForm.get('editage')?.dirty || editForm.get('editage')?.touched)">
+          <span class="text-danger">Employee Age is required</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="editemail" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="editemail" formControlName="editemail"/>
+        <div *ngIf="editForm.get('editemail')?.invalid &&(editForm.get('editemail')?.dirty || editForm.get('editemail')?.touched)">
+          <span class="text-danger">Valid email is required</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="editmobile" class="form-label">Mobile no:</label>
+        <input type="number" class="form-control" id="editmobile" formControlName="editmobile"/>
+        <div *ngIf="editForm.get('editmobile')?.invalid &&( editForm.get('editmobile')?.dirty || editForm.get('editmobile')?.touched) ">
+          <span class="text-danger">Valid mobile number is required (10 digits)</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="dob" class="form-label">Date of Birth:</label>
+        <mat-form-field appearance="fill">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dob"/>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <div *ngIf="editForm.get('dob')?.invalid && (editForm.get('dob')?.dirty || editForm.get('dob')?.touched) ">
+          <span class="text-danger">Date of Birth is required</span>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender:</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="male" />
+          <label class="form-check-label" for="male">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="female" />
+          <label class="form-check-label" for="female">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="gender" formControlName="gender" value="others" />
+          <label class="form-check-label" for="others">Others</label>
+        </div>
+        <div *ngIf="editForm.get('gender')?.invalid && (editForm.get('gender')?.dirty || editForm.get('gender')?.touched)">
+          <span class="text-danger">Gender is required</span>
+        </div>
+      </div>
+  
+      <div class="col-lg-4 mt-2">
+        <button class="btn btn-success btn-sm">Update</button>&nbsp;
+        <button type="button" routerLink="/table" class="btn btn-dark btn-sm">
+          Back
+        </button>
+      </div>
+    </form>
+  </div>
+  

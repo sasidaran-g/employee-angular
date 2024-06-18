@@ -1,0 +1,36 @@
+<h1>PERSONAL DETIALS</h1>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">DOB</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of readData">
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.age }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.mobile }}</td>
+        <td>{{ emp.dob }}</td>
+        <td>{{ emp.gender }}</td>
+        <td>
+          <a [routerLink]="['/personal-edit-form', emp.id]"
+            ><button class="btn btn-info">Edit</button></a
+          >&nbsp;<button class="btn btn-danger" (click)="onDelete(emp.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" routerLink="/table" class="btn btn-dark">Back</button>
+</div>
