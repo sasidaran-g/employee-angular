@@ -16,14 +16,7 @@ exports.insertEmployee = (req, res) => {
   const EmpData = req.body;
   db.query(
     Queries.insertData,
-    [
-      EmpData.empname,
-      parseInt(EmpData.empage),
-      EmpData.empemail,
-      EmpData.empmobile,
-      EmpData.dob,
-      EmpData.gender,
-    ],
+    [ EmpData.empname, parseInt(EmpData.empage), EmpData.empemail, EmpData.empmobile, EmpData.dob, EmpData.gender],
     (err, result) => {
       if (err) {
         console.log("error", err);
@@ -68,15 +61,7 @@ exports.updateEmployee = (req, res) => {
   const updateData = req.body;
   db.query(
     Queries.updateData,
-    [
-      updateData.editname,
-      updateData.editage,
-      updateData.editemail,
-      updateData.editmobile,
-      updateData.dob,
-      updateData.gender,
-      getId,
-    ],
+    [ updateData.editname, updateData.editage, updateData.editemail, updateData.editmobile, updateData.dob, updateData.gender, getId],
     (err, result) => {
       if (err) {
         console.log("error in update", err);
@@ -107,7 +92,7 @@ function send200AndData(res, result) {
   return;
 }
 
-async function send500Error(res, message) {
-  await res.status(500).send(message);
+function send500Error(res, message) {
+  res.status(500).send(message);
   return;
 }
